@@ -18,6 +18,7 @@ public class ClientHandler {
             if (cap != null) {
                 cap.setMaxMana(msg.maxMana());
                 cap.setMana(msg.mana());
+//                System.out.println("Client mana updated to: " + cap.getMana());
             }
         }).exceptionally(e -> {
             context.disconnect(Component.literal("Failed to sync mana: " + e.getMessage()));

@@ -1,68 +1,36 @@
 package net.het.tutorialrpg.capability.mana;
 
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.UnknownNullability;
 
-public class Mana implements IMana, INBTSerializable<CompoundTag> {
-    private int mana;
-    private int maxMana;
+
+public class Mana implements IMana {
+    private int mana, maxMana;
+
+    public Mana() {
+        this(0, 100); // Default values
+    }
 
     public Mana(int initialMana, int initialMaxMana) {
-        // Ensure maxMana ≥ 0, then clamp initialMana to [0, maxMana]
-        this.maxMana = Math.max(0, initialMaxMana);
-        this.mana    = Math.max(0, Math.min(initialMana, this.maxMana));
+        setMaxMana(initialMaxMana);
+        setMana(initialMana);
     }
 
-    @Override
-    public int getMana() {
-        return mana;
-    }
+    @Override public int getMana() { return mana; }
+    @Override public int getMaxMana() { return maxMana; }
 
-    @Override
-    public void setMana(int mana) {
-        // Clamp to [0, maxMana]
+
+    @Override public void setMana(int mana) {
         this.mana = Math.max(0, Math.min(mana, maxMana));
     }
-
-    @Override
-    public int getMaxMana() {
-        return maxMana;
-    }
-
-    @Override
-    public void setMaxMana(int maxMana) {
-        // Update maxMana and ensure current mana is not above it
+    @Override public void setMaxMana(int maxMana) {
         this.maxMana = Math.max(0, maxMana);
-        if (mana > this.maxMana) {
-            mana = this.maxMana;
-        }
+        if (this.mana > this.maxMana) this.mana = this.maxMana;
     }
 
-    @Override
-    public void addMana(int amount) {
-        // Delegate to setMana for proper clamping
-        setMana(this.mana + amount);
-    }
 
-    @Override
-    public void consumeMana(int amount) {
-        // Delegate to setMana for proper clamping
-        setMana(this.mana - amount);
+    @Override public void addMana(int amount) {
+        if (amount > 0) setMana(mana + amount);
     }
-
-    @Override
-    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        CompoundTag tag = new CompoundTag();
-        tag.putInt("Mana", mana);
-        tag.putInt("MaxMana", maxMana);
-        return tag;
-    }
-
-    @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-        this.maxMana = Math.max(0, tag.getInt("MaxMana"));
-        this.mana    = Math.max(0, Math.min(tag.getInt("Mana"), this.maxMana));
+    @Override public void consumeMana(int amount) {
+        if (amount > 0) setMana(mana - amount);
     }
 }
