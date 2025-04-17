@@ -1,6 +1,4 @@
-// src/main/java/net/het/tutorialrpg/system/mana/IMana.java
-
-package net.het.tutorialrpg.system.mana;
+package net.het.tutorialrpg.capability.mana;
 
 public interface IMana {
     int getMana();
