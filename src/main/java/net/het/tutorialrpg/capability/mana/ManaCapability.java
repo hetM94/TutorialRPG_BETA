@@ -1,8 +1,6 @@
-package net.het.tutorialrpg.capability;
+package net.het.tutorialrpg.capability.mana;
 
 import net.het.tutorialrpg.TutorialRPG;
-import net.het.tutorialrpg.capability.mana.IMana;
-import net.het.tutorialrpg.capability.mana.Mana;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,7 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @EventBusSubscriber(modid = TutorialRPG.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class ModCapability {
+public class ManaCapability {
     private static final Map<UUID, Mana> MANA_STORE = new ConcurrentHashMap<>();
 
     public static final EntityCapability<IMana, Void> MANA =

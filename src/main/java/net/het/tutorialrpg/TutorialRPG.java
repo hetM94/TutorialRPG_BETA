@@ -1,6 +1,6 @@
 package net.het.tutorialrpg;
 
-import net.het.tutorialrpg.capability.ModCapability;
+import net.het.tutorialrpg.capability.mana.ManaCapability;
 import net.het.tutorialrpg.data.ModData;
 import org.slf4j.Logger;
 
@@ -45,7 +45,7 @@ public class TutorialRPG {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-        modEventBus.addListener(ModCapability::register);
+        modEventBus.addListener(ManaCapability::register);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

@@ -1,8 +1,8 @@
-package net.het.tutorialrpg.event;
+package net.het.tutorialrpg.common.event;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.het.tutorialrpg.TutorialRPG;
-import net.het.tutorialrpg.util.command.ModCommands;
+import net.het.tutorialrpg.common.command.ModCommands;
 import net.minecraft.commands.CommandSourceStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

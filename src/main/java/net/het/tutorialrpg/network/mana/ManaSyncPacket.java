@@ -10,16 +10,16 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.UUID;
 
-public record PacketSyncMana(UUID playerId, int mana, int maxMana) implements CustomPacketPayload {
+public record ManaSyncPacket(UUID playerId, int mana, int maxMana) implements CustomPacketPayload {
 
-    public static final CustomPacketPayload.Type<PacketSyncMana> TYPE =
+    public static final CustomPacketPayload.Type<ManaSyncPacket> TYPE =
             new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(TutorialRPG.MOD_ID, "sync_mana"));
 
-    public static final StreamCodec<FriendlyByteBuf, PacketSyncMana> STREAM_CODEC = StreamCodec.composite(
-            UUIDUtil.STREAM_CODEC, PacketSyncMana::playerId,
-            ByteBufCodecs.VAR_INT, PacketSyncMana::mana,
-            ByteBufCodecs.VAR_INT, PacketSyncMana::maxMana,
-            PacketSyncMana::new
+    public static final StreamCodec<FriendlyByteBuf, ManaSyncPacket> STREAM_CODEC = StreamCodec.composite(
+            UUIDUtil.STREAM_CODEC, ManaSyncPacket::playerId,
+            ByteBufCodecs.VAR_INT, ManaSyncPacket::mana,
+            ByteBufCodecs.VAR_INT, ManaSyncPacket::maxMana,
+            ManaSyncPacket::new
     );
 
     @Override
