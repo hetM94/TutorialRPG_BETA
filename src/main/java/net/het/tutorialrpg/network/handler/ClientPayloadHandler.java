@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-import java.util.Objects;
 
 public class ClientPayloadHandler {
     public static void handleManaData(ManaData data, IPayloadContext context) {
