@@ -21,7 +21,7 @@ public class ManaOverlay {
     private static final ResourceLocation ORB_TEX     = rl("textures/gui/mana_orb.png");
     private static final ResourceLocation OUTLINE_TEX = rl("textures/gui/mana_outline.png");
 
-    private static final int X = 5, Y = 5;
+    private static final int X = 5, Y = 210;
     private static final int ORB_W = 16, BAR_W = 48, HEIGHT = 16;
 
     @SubscribeEvent
